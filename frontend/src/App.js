@@ -1,0 +1,25 @@
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
+import Home from "./component/Home";
+import Contact from "./component/Contact";
+import About from "./component/About";
+import Error from "./component/Error";
+import ProductDetail from "./component/screen/ProductDetail";
+import Header from "./component/Header";
+
+function App() {
+  return (
+    <Router>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
+        <Route path="/*" element={<Error />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;

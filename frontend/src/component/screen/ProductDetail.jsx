@@ -1,0 +1,58 @@
+import Product from "../../Product";
+import { Grid, Card, Typography, Box, Button } from "@mui/material";
+import { useParams } from "react-router-dom";
+
+const ProductDetail = ({ match }) => {
+  const { id } = useParams();
+  const product = Product.find((prod) => String(prod._id) === id);
+  return (
+    <Grid
+      container
+      alignItems="center"
+      sx={{
+        marginTop: "30px",
+        marginLeft: "55px",
+        padding: "25px",
+        color: "black",
+      }}
+    >
+      <Grid item md={6}>
+        <Box sx={{ border: 1 }}>
+          <img
+            src={product.image}
+            alt={product.name}
+            style={{
+              maxWidth: "auto",
+              height: "auto",
+            }}
+          />
+        </Box>
+      </Grid>
+
+      <Grid item md={3}>
+        <Box component="div" sx={{ padding: "15px" }}>
+          <Typography variant="h5">{product.name}</Typography>
+          <br />
+          <Typography variant="h5">{product.price}</Typography>
+          <br />
+          <Typography variant="body1">{product.description}</Typography>
+        </Box>
+      </Grid>
+      <Grid item md={3}>
+        <Button variant="contained" color="success">
+          Add to Cart
+        </Button>
+        <br />
+        <Typography
+          component="div"
+          sx={{ color: product.countInStock > 0 ? "blue" : "red" }}
+        >
+          Status: {product.countInStock > 0 ? "In stock" : "Out of Stock"}{" "}
+        </Typography>
+        <h5>Stock Left:{product.countInStock} pcs</h5>
+      </Grid>
+    </Grid>
+  );
+};
+
+export default ProductDetail;
