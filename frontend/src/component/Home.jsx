@@ -1,10 +1,19 @@
 import Footer from "./Footer";
-import Header from "./Header";
 import ProductScreen from "./screen/ProductScreen";
 import { Grid } from "@mui/material";
-import Products from "../Product";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+  const [Products, setProducts] = useState([]);
+  useEffect(() => {
+    const fetchProducts = async () => {
+      //calling asonymous function as data for response
+      const { data } = await axios.get(`/Product`);
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
   return (
     <div>
       {/* <Header /> */}
