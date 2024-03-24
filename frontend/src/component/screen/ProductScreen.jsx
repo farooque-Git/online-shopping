@@ -1,5 +1,4 @@
 import { Card, CardContent, Grid, Typography, CardMedia } from "@mui/material";
-import Rating from "../screen/Rating";
 import { Link } from "react-router-dom";
 
 const ProductScreen = ({ product }) => {
