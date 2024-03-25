@@ -94,6 +94,18 @@ const Products = [
     brand: "MageGee",
     countInStock: 10,
   },
+  {
+    _id: "8",
+    name: "MageGee 60% Mechanical Gaming Keyboard",
+    image: "/productImage/zeb-keyboard.webp",
+    description:
+      "Hot-Swappable Compact Blue LED Backlit Gaming Keyboard, Sky Wired Ergonomic Mini Office Keyboard for Windows PC Gamer (Black Blue/Blue",
+    price: "₹2,490",
+    rating: "4.5",
+    numReviews: 125,
+    brand: "MageGee",
+    countInStock: 10,
+  },
 ];
 
 module.exports = Products;

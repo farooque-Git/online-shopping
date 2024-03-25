@@ -7,11 +7,22 @@ import { useEffect, useState } from "react";
 const Home = () => {
   const [Products, setProducts] = useState([]);
   useEffect(() => {
+    // AXIOS 404 error so use try catch to hit the endpoint
+    // const fetchProducts = async () => {
+    //   //calling asonymous function as data for response
+    //   const { data } = await axios.get(`/Product`);
+    //   setProducts(data);
+    // };
+
     const fetchProducts = async () => {
-      //calling asonymous function as data for response
-      const { data } = await axios.get(`/Product`);
-      setProducts(data);
+      try {
+        const { data } = await axios.get("/products"); // Corrected endpoint
+        setProducts(data);
+      } catch (error) {
+        console.error("Error fetching products:", error);
+      }
     };
+
     fetchProducts();
   }, []);
   return (

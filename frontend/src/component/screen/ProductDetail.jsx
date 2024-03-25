@@ -1,21 +1,28 @@
-import Product from "../../Product";
 import { Grid, Typography, Box, Button } from "@mui/material";
 import { useParams } from "react-router-dom";
-import Products from "./../../Product";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
 const ProductDetail = ({ match }) => {
-  // const { id } = useParams();
+  const { id } = useParams();
   // const product = Product.find((prod) => String(prod._id) === id);
   //  above code is fetching from local storage
 
   // fetch data from backend
+
   const [product, setProduct] = useState([]);
   useEffect(() => {
     const fetchProduct = async () => {
-      const { data } = await axios.get(`/Products/${match.params.id}`);
-      setProduct(data);
+      // same issue with Axios 404 like products sso use try catch
+      //   const { data } = await axios.get(`/Products/${match.params.id}`);
+      //   setProduct(data);
+      // };
+      try {
+        const { data } = await axios.get(`/Products/${id}`);
+        setProduct(data);
+      } catch (error) {
+        console.error("Error fetching product:", error);
+      }
     };
     fetchProduct();
   }, [match]);
