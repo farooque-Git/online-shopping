@@ -1,10 +1,15 @@
 const express = require("express");
 const products = require("./data/Product");
 const dotenv = require("dotenv");
-const app = express();
+const connectDb = require("./config/config");
 
 // dotenv config
 dotenv.config();
+
+// connecting to database mongoDB
+connectDb();
+
+const app = express();
 
 app.get("/", (req, res) => {
   res.send("<h1> Node Server</h1>");
