@@ -1,6 +1,5 @@
 const Products = [
   {
-    _id: "1",
     name: "Backlit Mechanical Gaming Keyboard (Black)",
     image: "/productImage/keyboard.jpg",
     description: "Backlight keyboard with 30 RGB Light with Bluetooth v3.0 ",
@@ -11,7 +10,6 @@ const Products = [
     countInStock: 12,
   },
   {
-    _id: "2",
     name: "Canon EOS R50 Mirrorless Camera",
     image: "/productImage/cannon-camera.webp",
     description:
@@ -23,7 +21,6 @@ const Products = [
     countInStock: 14,
   },
   {
-    _id: "3",
     name: "Apple iPhone 15 (Blue, 128 GB)",
     image: "/productImage/iphone15.webp",
     description:
@@ -35,7 +32,6 @@ const Products = [
     countInStock: 0,
   },
   {
-    _id: "4",
     name: "Wired Optical Gaming Mouse ",
     image: "/productImage/wired-mouse.webp",
     description:
@@ -47,7 +43,6 @@ const Products = [
     countInStock: 11,
   },
   {
-    _id: "5",
     name: "ASUS ROG Strix G15 AMD Ryzen 7 Octa Core",
     image: "/productImage/rog-asus.webp",
     description:
@@ -59,7 +54,7 @@ const Products = [
     countInStock: 22,
   },
   {
-    _id: "6",
+    // _id: "6",
     name: "Acer Monitor 23.8 inch Full LED",
     image: "/productImage/acer-monitor.webp",
     description:
@@ -71,7 +66,7 @@ const Products = [
     countInStock: 9,
   },
   {
-    _id: "7",
+    // _id: "7",
     name: "Hp Pavilion AMD Ryzen 5 Hexa core",
     image: "/productImage/hp-pavilion.webp",
     description:
@@ -83,19 +78,6 @@ const Products = [
     countInStock: 16,
   },
   {
-    _id: "8",
-    name: "MageGee 60% Mechanical Gaming Keyboard",
-    image: "/productImage/zeb-keyboard.webp",
-    description:
-      "Hot-Swappable Compact Blue LED Backlit Gaming Keyboard, Sky Wired Ergonomic Mini Office Keyboard for Windows PC Gamer (Black Blue/Blue",
-    price: "₹2,490",
-    rating: "4.5",
-    numReviews: 125,
-    brand: "MageGee",
-    countInStock: 10,
-  },
-  {
-    _id: "8",
     name: "MageGee 60% Mechanical Gaming Keyboard",
     image: "/productImage/zeb-keyboard.webp",
     description:
