@@ -2,6 +2,7 @@ const express = require("express");
 const products = require("./data/Product");
 const dotenv = require("dotenv");
 const connectDb = require("./config/config");
+const productsRoutes = require("./routes/productRoute");
 
 // dotenv config
 dotenv.config();
@@ -11,20 +12,24 @@ connectDb();
 
 const app = express();
 
+
+
 app.get("/", (req, res) => {
   res.send("<h1> Node Server</h1>");
 });
 
-// Route to get all products
-app.get("/Products", (req, res) => {
-  res.json(products);
-});
+app.use("/api", productRoutes);
 
-// Route to get a specific product by ID
-app.get("/Products/:id", (req, res) => {
-  const product = products.find((prod) => prod._id === req.params.id);
-  res.json(product);
-});
+// // Route to get all products
+// app.get("/Products", (req, res) => {
+//   res.json(products);
+// });
+
+// // Route to get a specific product by ID
+// app.get("/Products/:id", (req, res) => {
+//   const product = products.find((prod) => prod._id === req.params.id);
+//   res.json(product);
+// });
 
 // Start the server
 const PORT = 8080;
