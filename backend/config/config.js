@@ -5,7 +5,8 @@ const connectDb = async () => {
     const conn = await mongoose.connect(process.env.MONGO_URI, {
       useUnifiedTopology: true,
       useNewUrlParser: true,
-      useCreateIndex: true,
+      // useCreateIndex: true,
+      //   useFindAndModify: false,
     });
     console.log(`MongDB connected ${conn.connection.host}`);
   } catch (error) {
@@ -15,3 +16,5 @@ const connectDb = async () => {
     process.exit(1);
   }
 };
+
+module.exports = connectDb;

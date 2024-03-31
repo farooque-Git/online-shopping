@@ -29,4 +29,4 @@ const User = mongoose.model("User", userSchema);
 // operations and additional functionality
 // provided by Mongoose, such as validation, hooks, and middleware.
 
-export default User;
+module.exports = User;

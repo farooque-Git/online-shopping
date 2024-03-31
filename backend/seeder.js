@@ -1,9 +1,10 @@
+const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const users = require("./data/users");
+const users = require("./data/User");
 const User = require("./models/UserModel");
 const Product = require("./models/ProductModel");
 const Order = require("./models/OrderModel");
-const products = require("./data/Product");
+const products = require("./data/products");
 const connectDb = require("./config/config");
 
 dotenv.config();
@@ -20,7 +21,7 @@ const importData = async () => {
     const sampleData = products.map((product) => {
       return { ...product, user: adminUser };
     });
-    await Product.insertmany(sampleData);
+    await Product.insertMany(sampleData);
     console.log("Data imported");
     process.exit();
   } catch (error) {
@@ -34,11 +35,11 @@ const dataDestroy = async () => {
     await Order.deleteMany();
     await Product.deleteMany();
     await User.deleteMany();
-    console.log("Data Distroy");
+    console.log("Data Destroy");
     process.exit();
   } catch (error) {
     console.log(`${error}`);
-    process.exit();
+    process.exit(1);
   }
 };
 

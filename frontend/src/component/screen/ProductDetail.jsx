@@ -18,7 +18,7 @@ const ProductDetail = ({ match }) => {
       //   setProduct(data);
       // };
       try {
-        const { data } = await axios.get(`/Products/${id}`);
+        const { data } = await axios.get(`/api/Products/${id}`);
         setProduct(data);
       } catch (error) {
         console.error("Error fetching product:", error);

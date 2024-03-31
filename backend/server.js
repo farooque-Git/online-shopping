@@ -1,40 +1,42 @@
 const express = require("express");
-const products = require("./data/Product");
 const dotenv = require("dotenv");
 const connectDb = require("./config/config");
-const productsRoutes = require("./routes/productRoute");
+const productRoutes = require("./routes/productRoute");
+const { errorHandler } = require("./middlewares/errorMiddleware");
 
-// dotenv config
+// Load environment variables
 dotenv.config();
 
-// connecting to database mongoDB
+// Connect to MongoDB
 connectDb();
 
+// Create Express app
 const app = express();
 
+// Middleware to parse JSON bodies
+app.use(express.json());
 
-
-app.get("/", (req, res) => {
-  res.send("<h1> Node Server</h1>");
+// Middleware to handle CORS (Cross-Origin Resource Sharing)
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE");
+  next();
 });
 
-app.use("/api", productRoutes);
+// Route to serve API requests for products
+app.use("/api/products", productRoutes);
 
-// // Route to get all products
-// app.get("/Products", (req, res) => {
-//   res.json(products);
-// });
+// Error handling middleware
+app.use(errorHandler);
 
-// // Route to get a specific product by ID
-// app.get("/Products/:id", (req, res) => {
-//   const product = products.find((prod) => prod._id === req.params.id);
-//   res.json(product);
-// });
+// Define the port
+const PORT = process.env.PORT || 8080;
 
 // Start the server
-const PORT = 8080;
-app.listen(process.env.PORT || PORT, () => {
-  console.log(
-    `Server running in $(process.env.NODE_ENV) Mode on Port ${process.env.PORT} `
-  );
+app.listen(PORT, () => {
+  console.log(`Server running in ${process.env.NODE_ENV} mode on port ${PORT}`);
 });
