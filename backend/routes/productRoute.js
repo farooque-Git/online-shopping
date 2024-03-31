@@ -2,7 +2,6 @@ const express = require("express");
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/ProductModel");
 
-
 const router = express.Router();
 // Route to get all products
 router.get(
@@ -21,7 +20,7 @@ router.get(
     if (product) {
       res.json(product);
     } else {
-      res.status(404).jsonp({ message: "Product Not FOUND!!" });
+      res.status(404).json({ message: "Product Not FOUND!!" });
     }
   })
 );

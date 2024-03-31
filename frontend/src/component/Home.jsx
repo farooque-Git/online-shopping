@@ -16,7 +16,7 @@ const Home = () => {
 
     const fetchProducts = async () => {
       try {
-        const { data } = await axios.get("/products"); // Corrected endpoint
+        const { data } = await axios.get("/api/products"); // Corrected endpoint
         setProducts(data);
       } catch (error) {
         console.error("Error fetching products:", error);

@@ -25,7 +25,7 @@ const ProductDetail = ({ match }) => {
       }
     };
     fetchProduct();
-  }, [match]);
+  }, [id]);
 
   return (
     <Grid
