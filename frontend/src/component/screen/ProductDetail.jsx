@@ -39,13 +39,14 @@ const ProductDetail = ({ match }) => {
       }}
     >
       <Grid item md={6}>
-        <Box sx={{ border: 1 }}>
+        <Box display="flex" justifyContent="center" sx={{ border: 0 }}>
           <img
             src={product.image}
             alt={product.name}
             style={{
-              maxWidth: "auto",
+              maxWidth: "500px",
               height: "auto",
+              padding: "25px",
             }}
           />
         </Box>

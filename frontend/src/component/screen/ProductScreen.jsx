@@ -25,6 +25,7 @@ const ProductScreen = ({ product }) => {
             component="img"
             height="200px"
             width="auto"
+            padding="5px"
             image={product.image}
             alt={product.name}
           ></CardMedia>

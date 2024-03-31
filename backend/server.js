@@ -18,7 +18,22 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api", productRoutes);
-app.use(errorHandler);
+// error handling middleware for other errors
+app.use((req, res, next) => {
+  const err = new Error("Not found");
+  err.status = 404;
+  next(err);
+});
+
+app.use((err, req, res, next) => {
+  const statusCode = err.status || 500;
+
+  res.status(statusCode).json({
+    error: {
+      message: err.message || "Internal Server Error",
+    },
+  });
+});
 
 // // Route to get all products
 // app.get("/Products", (req, res) => {

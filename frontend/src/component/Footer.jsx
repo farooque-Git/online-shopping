@@ -12,7 +12,18 @@ const Footer = () => {
       }}
     >
       <Typography>
-        <h3> This website is created by Farooque Ali  ©</h3>
+        <h3>
+          {" "}
+          This website is created by{" "}
+          <a
+            href="https://portfolio-main-virid-six.vercel.app/"
+            target="_blank"
+            style={{ textDecoration: "none", color: "orange" }}
+          >
+            Farooque Ali
+          </a>{" "}
+          ©
+        </h3>
       </Typography>
     </Grid>
   );
