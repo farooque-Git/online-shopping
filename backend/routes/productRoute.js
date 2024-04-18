@@ -1,13 +1,14 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
 const Product = require("../models/ProductModel");
-
 const router = express.Router();
+
 // Route to get all products
 router.get(
   "/products",
   asyncHandler(async (req, res) => {
     const products = await Product.find({});
+    // throw new error ("some error")
     res.json(products);
   })
 );
