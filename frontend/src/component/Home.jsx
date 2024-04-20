@@ -5,6 +5,7 @@ import { Grid, CircularProgress } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProducts } from "../actions/productActions";
+import Message from "./shared/Message";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -36,13 +37,20 @@ const Home = () => {
 
   return (
     <div>
-      {/* <Header /> */}
-
       <>
         {loading ? (
-          <CircularProgress />
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              minHeight: "100vh",
+            }}
+          >
+            <CircularProgress />
+          </div>
         ) : error ? (
-          <h2>{error}</h2>
+          <Message>{error}</Message>
         ) : (
           <Grid container spacing={2} sx={{ padding: "15px" }}>
             {products.map((product) => (

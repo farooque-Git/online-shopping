@@ -8,6 +8,7 @@ import {
   PRODUCT_DETAILS_FAILS,
 } from "../constant/productConstant";
 
+//fetch product while using redux
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
@@ -24,6 +25,7 @@ export const listProducts = () => async (dispatch) => {
   }
 };
 
+//fetch by ID while using redux
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
