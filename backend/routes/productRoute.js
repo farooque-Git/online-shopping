@@ -17,11 +17,17 @@ router.get(
 router.get(
   "/products/:id",
   asyncHandler(async (req, res) => {
-    const product = await Product.findById(req.params.id);
-    if (product) {
-      res.json(product);
-    } else {
-      res.status(404).json({ message: "Product Not FOUND!!" });
+    try {
+      console.log("Request params:", req.params);
+      const product = await Product.findById(req.params.id);
+      if (product) {
+        res.json(product);
+      } else {
+        res.status(404).json({ message: "Product Not FOUND!!" });
+      }
+    } catch (error) {
+      // Handle any errors that occur during the database query
+      res.status(500).json({ message: "Internal Server Error" });
     }
   })
 );

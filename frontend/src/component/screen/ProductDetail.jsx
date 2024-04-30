@@ -3,6 +3,8 @@ import { Grid, Typography, Box, Button } from "@mui/material";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/productActions";
+import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 // import axios from "axios";
 
@@ -16,6 +18,7 @@ const ProductDetail = ({ match }) => {
   // const [product, setProduct] = useState([]);
 
   // DATA WILL FETCH BY REACT REDUX
+  const { id } = useParams();
   const dispatch = useDispatch();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
@@ -39,8 +42,8 @@ const ProductDetail = ({ match }) => {
 
     // FETCH DATA BY REDUX
 
-    dispatch(listProductDetails(match.params.id));
-  }, [dispatch, match]);
+    dispatch(listProductDetails(id));
+  }, [dispatch, id]);
 
   return (
     <Grid

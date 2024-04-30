@@ -5,7 +5,7 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAILS,
-} from "../constant/productConstant";
+} from "../constants/productConstant";
 
 export const productListReducer = (state = { products: [] }, action) => {
   switch (action.type) {
@@ -21,7 +21,7 @@ export const productListReducer = (state = { products: [] }, action) => {
 };
 
 export const productDetailsReducer = (
-  state = { product: { review: [] } },
+  state = { product: { reviews: [] } },
   action
 ) => {
   switch (action.type) {
