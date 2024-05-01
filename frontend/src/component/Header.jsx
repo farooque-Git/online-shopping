@@ -70,7 +70,7 @@ const Header = () => {
         <Button
           variant="contained"
           component={Link}
-          to="/contact"
+          to="/cart"
           color="success"
           sx={{ marginLeft: "8px" }}
         >
