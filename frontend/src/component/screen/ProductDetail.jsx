@@ -1,10 +1,19 @@
-import { Grid, Typography, Box, Button } from "@mui/material";
-// import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import {
+  Grid,
+  Typography,
+  Box,
+  Button,
+  List,
+  ListItem,
+  ListItemText,
+  FormControl,
+  Select,
+  MenuItem,
+} from "@mui/material";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { listProductDetails } from "../../actions/productActions";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 // import axios from "axios";
 
@@ -18,8 +27,11 @@ const ProductDetail = ({ match }) => {
   // const [product, setProduct] = useState([]);
 
   // DATA WILL FETCH BY REACT REDUX
+  const [qty, setQty] = useState(1);
   const { id } = useParams();
   const dispatch = useDispatch();
+  // const history = useHistory();
+  const navigate = useNavigate();
   const productDetails = useSelector((state) => state.productDetails);
   const { loading, error, product } = productDetails;
 
@@ -44,6 +56,10 @@ const ProductDetail = ({ match }) => {
 
     dispatch(listProductDetails(id));
   }, [dispatch, id]);
+
+  const addToCartHandler = () => {
+    navigate(`/cart/${id}?qty=${qty}`);
+  };
 
   return (
     <Grid
@@ -80,9 +96,42 @@ const ProductDetail = ({ match }) => {
         </Box>
       </Grid>
       <Grid item md={3}>
-        <Button variant="contained" color="success">
+        <Button variant="contained" color="success" onClick={addToCartHandler}>
           Add to Cart
         </Button>
+
+        {/* Qty [0,1,2,3,4] */}
+        <List>
+          {product.countInStock > 0 && (
+            <ListItem>
+              <ListItemText
+                primary={<Typography variant="h6">Qty</Typography>}
+              />
+              <Grid container spacing={2} alignItems="center">
+                <Grid item>
+                  <Box mr={2}>
+                    {" "}
+                    {/* Add margin to create space */}
+                    <FormControl variant="outlined">
+                      <Select
+                        value={qty}
+                        onChange={(e) => setQty(e.target.value)}
+                        label="Quantity"
+                      >
+                        {[...Array(product.countInStock).keys()].map((x) => (
+                          <MenuItem key={x + 1} value={x + 1}>
+                            {x + 1}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                  </Box>
+                </Grid>
+              </Grid>
+            </ListItem>
+          )}
+        </List>
+
         <br />
         <Typography
           component="div"
