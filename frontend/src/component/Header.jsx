@@ -7,6 +7,8 @@ const Header = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
       <Toolbar
+        component={Link}
+        to="/"
         style={{
           display: "flex",
           alignItems: "center",
@@ -19,7 +21,7 @@ const Header = () => {
           style={{ marginRight: "10px", height: "55px" }}
         />
         <div style={{ flexGrow: 1 }}></div>
-        <Button
+        {/* <Button
           component={Link}
           to="/"
           color="inherit"
@@ -30,7 +32,7 @@ const Header = () => {
           }}
         >
           Home
-        </Button>
+        </Button> */}
         <Button
           component={Link}
           to="/about"
