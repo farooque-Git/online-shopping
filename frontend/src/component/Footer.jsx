@@ -1,4 +1,5 @@
 import { Grid, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -12,16 +13,25 @@ const Footer = () => {
       }}
     >
       <Typography>
+        <Link to="/about" style={{ textDecoration: "none", color: "black" }}>
+          About
+        </Link>{" "}
+        |{" "}
+        <Link to="/contact" style={{ textDecoration: "none", color: "black" }}>
+          Contact
+        </Link>
+      </Typography>
+      <Typography>
         <h3>
           {" "}
           This website is created by{" "}
-          <a
-            href="https://portfolio-main-virid-six.vercel.app/"
+          <Link
+            to="https://portfolio-main-virid-six.vercel.app/"
             target="_blank"
             style={{ textDecoration: "none", color: "orange" }}
           >
             Farooque Ali
-          </a>{" "}
+          </Link>{" "}
           ©
         </h3>
       </Typography>

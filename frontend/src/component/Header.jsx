@@ -21,6 +21,8 @@ const Header = () => {
           style={{ marginRight: "10px", height: "55px" }}
         />
         <div style={{ flexGrow: 1 }}></div>
+
+        {/* THIS IS MOVE TOWARDS FOOTER */}
         {/* <Button
           component={Link}
           to="/"
@@ -33,7 +35,7 @@ const Header = () => {
         >
           Home
         </Button> */}
-        <Button
+        {/* <Button
           component={Link}
           to="/about"
           color="inherit"
@@ -56,7 +58,7 @@ const Header = () => {
           }}
         >
           Contact
-        </Button>
+        </Button> */}
         <Button
           variant="contained"
           sx={{
