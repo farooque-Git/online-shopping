@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const connectDb = require("./config/config");
 const productRoutes = require("./routes/productRoute");
 const { errorHandler } = require("./middlewares/errorMiddleware");
+const usersRoutes = require("./routes/UsersRoute");
 
 // dotenv config
 dotenv.config();
@@ -12,12 +13,16 @@ dotenv.config();
 connectDb();
 
 const app = express();
+// middleware bodyparser
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("<h1> This is Node Server</h1>");
 });
 
 app.use("/api", productRoutes);
+app.use("/api/users", usersRoutes);
+
 // error handling middleware for other errors
 app.use((req, res, next) => {
   const err = new Error("Not found");

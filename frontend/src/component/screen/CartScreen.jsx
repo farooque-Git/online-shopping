@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addToCart } from "../../actions/cartAction";
+import { addToCart, removeFromCart } from "../../actions/cartAction";
 import { useParams, useLocation, Link } from "react-router-dom";
 import {
   Card,
@@ -32,7 +32,9 @@ const CartScreen = ({ history }) => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  const removeFromCartHandler = (id) => {};
+  const removeFromCartHandler = (id) => {
+    dispatch(removeFromCart(id));
+  };
 
   const checkout = () => {
     history.pushState("./login?redirect=shipping");
@@ -42,11 +44,14 @@ const CartScreen = ({ history }) => {
     <>
       <Grid container spacing={3}>
         <Grid item xs={12} md={8}>
-          <Typography variant="h4">Shopping Cart</Typography>
+          <Typography variant="h4">Your Bucket List</Typography>
           {cartItems.length === 0 ? (
             <Paper elevation={3} style={{ padding: "20px", marginTop: "10px" }}>
               <Typography variant="body1">
-                Your Cart is Empty! <Link to="/">Go Back</Link>
+                Your Bucket-List is Empty!{" "}
+                <Link to="/" textDecoration="none">
+                  Go Back
+                </Link>
               </Typography>
             </Paper>
           ) : (
@@ -106,15 +111,23 @@ const CartScreen = ({ history }) => {
           )}
         </Grid>
         <Grid item xs={12} md={4}>
-          <Card style={{ padding: "20px", marginTop: "10px" }}>
+          <Card style={{ padding: "20px", margin: "100px" }}>
             <Typography variant="h5">
-              Sub Total ({cartItems.reduce((acc, item) => acc + item.qty, 0)}{" "}
+              Sub-Total ({cartItems.reduce((acc, item) => acc + item.qty, 0)}{" "}
               items)
             </Typography>
             <Typography variant="h6">
-              $
-              {cartItems
+              ₹
+              {/*  This is for only Number {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .toFixed(2)} */}
+              {cartItems
+                .reduce(
+                  (acc, item) =>
+                    acc +
+                    parseFloat(item.price.replace(/[^\d.-]+/g, "")) * item.qty,
+                  0
+                )
                 .toFixed(2)}
             </Typography>
             <Button
