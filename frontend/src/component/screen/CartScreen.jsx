@@ -48,10 +48,7 @@ const CartScreen = ({ history }) => {
           {cartItems.length === 0 ? (
             <Paper elevation={3} style={{ padding: "20px", marginTop: "10px" }}>
               <Typography variant="body1">
-                Your Bucket-List is Empty!{" "}
-                <Link to="/" textDecoration="none">
-                  Go Back
-                </Link>
+                Your Bucket-List is Empty! <Link to="/">Go Back</Link>
               </Typography>
             </Paper>
           ) : (

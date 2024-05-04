@@ -72,7 +72,7 @@ const Header = () => {
           component={Link}
           to="/cart"
           color="success"
-          sx={{ marginLeft: "8px" }}
+          sx={{ marginLeft: "8px", fontWeight: "bold" }}
         >
           <ShoppingCartIcon />
           &nbsp; Cart

@@ -1,6 +1,6 @@
 const About = () => {
   return (
-    <div>
+    <>
       <div>
         {
           <h2 style={{ padding: "10px", margin: "20px" }}>
@@ -11,7 +11,7 @@ const About = () => {
           </h2>
         }
       </div>
-    </div>
+    </>
   );
 };
 
