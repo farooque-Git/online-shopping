@@ -23,4 +23,8 @@ const authController = asyncHandler(async (req, res) => {
   // });
 });
 
-module.exports = { authController };
+const getUserProfile = asyncHandler(async (req, res) => {
+  res.send("Success");
+});
+
+module.exports = { authController, getUserProfile };
