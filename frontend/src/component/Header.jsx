@@ -7,19 +7,20 @@ const Header = () => {
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
       <Toolbar
-        component={Link}
-        to="/"
+        component="div"
         style={{
           display: "flex",
           alignItems: "center",
           color: "black",
         }}
       >
-        <img
-          src={Logo}
-          alt="logo"
-          style={{ marginRight: "10px", height: "55px" }}
-        />
+        <Link to="/">
+          <img
+            src={Logo}
+            alt="logo"
+            style={{ marginRight: "10px", height: "55px" }}
+          />
+        </Link>
         <div style={{ flexGrow: 1 }}></div>
 
         {/* THIS IS MOVE TOWARDS FOOTER */}
@@ -59,6 +60,7 @@ const Header = () => {
         >
           Contact
         </Button> */}
+
         <Button
           variant="contained"
           component={Link}
