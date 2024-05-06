@@ -8,14 +8,14 @@ import {
 
 export const login = (email, password) => async (dispatch) => {
   try {
-    dispatchEvent({ type: USER_LOGIN_REQUEST });
+    dispatch({ type: USER_LOGIN_REQUEST });
     const config = { headers: { "content-Type": "applocation/json" } };
     const { data } = await axios.post(
       "/api/users/login",
       { email, password },
       config
     );
-    dispatchEvent({
+    dispatch({
       type: USER_LOGIN_SUCCESS,
       payload: data,
     });
