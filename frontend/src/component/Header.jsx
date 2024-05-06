@@ -61,12 +61,15 @@ const Header = () => {
         </Button> */}
         <Button
           variant="contained"
-          sx={{
-            fontWeight: "bold",
-          }}
+          component={Link}
+          to="/login"
+          color="primary"
+          sx={{ fontWeight: "bold" }}
         >
           SIGN IN
         </Button>
+
+        {/* Cart Button */}
         <Button
           variant="contained"
           component={Link}
