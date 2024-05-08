@@ -45,7 +45,7 @@ const LoginScreen = () => {
         {/* Adjust the width of the form for different screen sizes */}
         <FormContainer>
           <Typography variant="h4">SIGN IN</Typography>
-          {error && <Message variant="danger">{error}</Message>}
+
           {loading && <Loader />}
           <form onSubmit={submitHandler}>
             {/* Email input field */}
@@ -76,6 +76,7 @@ const LoginScreen = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+            {error && <Message variant="danger">{error}</Message>}
             {/* Submit button */}
             <Button type="submit" variant="contained" color="primary">
               SIGN IN
