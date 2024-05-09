@@ -2,8 +2,10 @@ import { AppBar, Button, Toolbar } from "@mui/material";
 import { Link } from "react-router-dom";
 import Logo from "./image/online.jpg";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import { useDispatch, useSelector} from "react-redux";
 
 const Header = () => {
+
   return (
     <AppBar position="static" sx={{ backgroundColor: "white" }}>
       <Toolbar
