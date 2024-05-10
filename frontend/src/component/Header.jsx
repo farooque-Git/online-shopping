@@ -27,7 +27,7 @@ const NavDropdown = ({ userInfo, logoutHandler }) => {
         color="inherit"
         sx={{ marginLeft: "8px", fontWeight: "bold" }}
       >
-        {userInfo.home}
+        {userInfo}
       </Button>
       <Menu
         id="menu-appbar"
@@ -87,7 +87,7 @@ const Header = () => {
 
         {/* Rendering NavDropdown component */}
         {userInfo ? (
-          <NavDropdown userInfo={userInfo} logoutHandler={logoutHandler} />
+          <NavDropdown userInfo={userInfo.name} logoutHandler={logoutHandler} />
         ) : (
           <Button
             variant="contained"
