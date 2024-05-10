@@ -96,7 +96,7 @@ const Header = () => {
             color="inherit" // Change color to inherit
             sx={{ fontWeight: "bold" }}
           >
-            SIGN IN
+            LOGIN
           </Button>
         )}
 

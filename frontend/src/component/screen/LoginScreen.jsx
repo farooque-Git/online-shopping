@@ -43,7 +43,7 @@ const LoginScreen = () => {
       <Grid item xs={12} sm={8} md={6} lg={8}>
         {" "}
         <FormContainer>
-          <Typography variant="h4">SIGN IN</Typography>
+          <Typography variant="h4">LOGIN</Typography>
 
           {loading && <Loader />}
           <form onSubmit={submitHandler}>
