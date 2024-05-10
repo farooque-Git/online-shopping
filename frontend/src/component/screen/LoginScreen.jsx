@@ -38,11 +38,10 @@ const LoginScreen = () => {
       container
       justifyContent="center"
       alignItems="center"
-      style={{ minHeight: "80vh" }} // Ensure the form fills the entire viewport height
+      style={{ minHeight: "80vh" }}
     >
       <Grid item xs={12} sm={8} md={6} lg={8}>
         {" "}
-        {/* Adjust the width of the form for different screen sizes */}
         <FormContainer>
           <Typography variant="h4">SIGN IN</Typography>
 
@@ -88,7 +87,7 @@ const LoginScreen = () => {
               <Typography variant="body2">
                 New User?{" "}
                 <Link
-                  to={redirect ? `register?redirect=${redirect}` : "/register"}
+                  to={redirect ? `/register?redirect=${redirect}` : "/register"}
                   style={{ textDecoration: "none" }}
                 >
                   Register

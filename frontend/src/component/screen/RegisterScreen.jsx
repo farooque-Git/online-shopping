@@ -4,9 +4,8 @@ import { Grid, TextField, Button, Typography } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../shared/Message";
 import Loader from "../shared/Loader";
-import { login } from "../../actions/userAction";
+import { register } from "../../actions/userAction";
 import FormContainer from "../shared/FormContainer";
-import Message from "./../shared/Message";
 
 const RegisterScreen = () => {
   const [name, setName] = useState();
@@ -34,10 +33,10 @@ const RegisterScreen = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      setMessage("Password do not Match!!!");
+      setMessage("Password does not Match !!!");
     } else {
       // Dispatch the login action
-      dispatch(login(email, password));
+      dispatch(register(name, email, password));
     }
   };
 
@@ -53,7 +52,7 @@ const RegisterScreen = () => {
         {" "}
         {/* Adjust the width of the form for different screen sizes */}
         <FormContainer>
-          <Typography variant="h4">SIGN IN</Typography>
+          <Typography variant="h4">REGISTER</Typography>
 
           {loading && <Loader />}
           <form onSubmit={submitHandler}>
@@ -64,11 +63,11 @@ const RegisterScreen = () => {
               required
               fullWidth
               id="name"
-              label="name"
+              label="Name"
               name="name"
               autoComplete="name"
               autoFocus
-              value={text}
+              value={name}
               onChange={(e) => setName(e.target.value)}
             />
             {/* Email input field */}
@@ -105,15 +104,16 @@ const RegisterScreen = () => {
               margin="normal"
               required
               fullWidth
-              name="confirm-password"
+              name="confirmpassword"
               label="Confirm Password"
               type="password"
               id="password"
               autoComplete="current-password"
-              value={password}
+              value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
             />
             {error && <Message variant="danger">{error}</Message>}
+            {message && <Message variant="danger">{message}</Message>}
             {/* Submit button */}
             <Button type="submit" variant="contained" color="primary">
               REGISTER
@@ -125,7 +125,7 @@ const RegisterScreen = () => {
               <Typography variant="body2">
                 Have an Account?{" "}
                 <Link
-                  to={redirect ? `login?redirect=${redirect}` : "/login"}
+                  to={redirect ? `/login?redirect=${redirect}` : "/login"}
                   style={{ textDecoration: "none" }}
                 >
                   Login
