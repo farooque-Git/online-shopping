@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   Grid,
   Typography,
@@ -25,14 +25,19 @@ const ProfileScreen = () => {
   const [confirmPassword, setConfirmPassword] = useState();
   const [message, setMessage] = useState();
 
-  const location = useLocation();
   const navigate = useNavigate();
-
   const dispatch = useDispatch();
-  const userDetails = useSelector((state) => state.userDetails);
-  const userLogin = useSelector((state) => state.userLogin);
 
+  const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
+  //   const userDetails = useSelector((state) => state.userDetails);
+  //   const {
+  //     loading: userDetailsLoading,
+  //     error: userDetailsError,
+  //     user,
+  //   } = userDetails || {};
+
+  const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
@@ -44,7 +49,7 @@ const ProfileScreen = () => {
   useEffect(() => {
     // Redirect to the specified route if user info is available
     if (!userInfo) {
-      navigate(redirect);
+      navigate("/login");
     } else {
       if (!user.name) {
         dispatch(getUserDetails("profile"));
@@ -53,7 +58,7 @@ const ProfileScreen = () => {
         setEmail(user.email);
       }
     }
-  }, [navigate, userInfo, redirect]);
+  }, [navigate, userInfo, user, dispatch]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -61,7 +66,7 @@ const ProfileScreen = () => {
       setMessage("Password does not Match !!!");
     } else {
       // Dispatch the login action
-      dispatch(register(name, email, password));
+      //   dispatch(updateUserProfile(name, email, password));
     }
   };
 
