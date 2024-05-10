@@ -9,6 +9,7 @@ import Header from "./component/Header";
 import Footer from "./component/Footer";
 import CartScreen from "./component/screen/CartScreen";
 import LoginScreen from "./component/screen/LoginScreen";
+import RegisterScreen from "./component/screen/RegisterScreen";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginScreen />} />
+        <Route path="/register" element={<RegisterScreen />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<ProductDetail />} />
