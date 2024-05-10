@@ -31,7 +31,7 @@ const ProductScreen = ({ product }) => {
           ></CardMedia>
         </Link>
         <CardContent variant="body2">
-          <Link to={`/api/product/${product._id}`}>
+          <Link to={`/product/${product._id}`}>
             <Typography variant="h6" component="div">
               {product.name}
             </Typography>
