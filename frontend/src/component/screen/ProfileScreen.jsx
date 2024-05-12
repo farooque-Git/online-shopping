@@ -70,12 +70,13 @@ const ProfileScreen = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      setMessage("Password does not Match !!!");
-    } else {
-      // Dispatch the login action
-      dispatch(updateUserProfile({ id: user._id, name, email, password }));
-    }
+    dispatch(updateUserProfile({ id: user._id, name, email, password }));
+    // if (password !== confirmPassword) {
+    //   setMessage("Password does not Match !!!");
+    // } else {
+    //   // Dispatch the login action
+    //   dispatch(updateUserProfile({ id: user._id, name, email, password }));
+    // }
   };
 
   return (
