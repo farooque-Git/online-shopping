@@ -11,6 +11,8 @@ import CartScreen from "./component/screen/CartScreen";
 import LoginScreen from "./component/screen/LoginScreen";
 import RegisterScreen from "./component/screen/RegisterScreen";
 import ProfileScreen from "./component/screen/ProfileScreen";
+import ShippingScreen from "./component/screen/ShippingScreen";
+import PaymentScreen from "./component/screen/PaymentScreen";
 
 function App() {
   return (
@@ -19,6 +21,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<LoginScreen />} />
+        <Route path="/payment" element={<PaymentScreen />} />
+        <Route path="/shipping" element={<ShippingScreen />} />
+
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/profile" element={<ProfileScreen />} />
 
