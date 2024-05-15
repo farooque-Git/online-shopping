@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../actions/cartAction";
-import { useParams, useLocation, Link } from "react-router-dom";
+import { useParams, useLocation, Link, useNavigate } from "react-router-dom";
 import {
   Card,
   Button,
@@ -15,12 +15,13 @@ import {
 } from "@mui/material";
 import { DeleteOutline } from "@mui/icons-material";
 
-const CartScreen = ({ history }) => {
+const CartScreen = () => {
   const { id } = useParams();
   const productId = id;
   const location = useLocation();
   const qty = location.search ? Number(location.search.split("=")[1]) : 1; //in searchBar qty=1 {qty=} will be 0, {1} is 1 index
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   //   const history = useHistory();
 
   useEffect(() => {
@@ -37,7 +38,7 @@ const CartScreen = ({ history }) => {
   };
 
   const checkout = () => {
-    history.pushState("./login?redirect=shipping");
+    navigate("/shipping");
   };
 
   return (

@@ -30,15 +30,15 @@ app.use((req, res, next) => {
   next(err);
 });
 
-app.use((err, req, res, next) => {
-  const statusCode = err.status || 500;
+// app.use((err, req, res, next) => {
+//   const statusCode = err.status || 500;
 
-  res.status(statusCode).json({
-    error: {
-      message: err.message || "Internal Server Error",
-    },
-  });
-});
+//   res.status(statusCode).json({
+//     error: {
+//       message: err.message || "Internal Server Error",
+//     },
+//   });
+// });
 
 // // Route to get all products
 // app.get("/Products", (req, res) => {

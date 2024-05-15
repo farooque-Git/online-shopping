@@ -23,10 +23,8 @@ function App() {
         <Route path="/login" element={<LoginScreen />} />
         <Route path="/payment" element={<PaymentScreen />} />
         <Route path="/shipping" element={<ShippingScreen />} />
-
         <Route path="/register" element={<RegisterScreen />} />
         <Route path="/profile" element={<ProfileScreen />} />
-
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/product/:id" element={<ProductDetail />} />
