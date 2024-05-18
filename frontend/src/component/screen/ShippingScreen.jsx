@@ -86,7 +86,12 @@ const ShippingScreen = () => {
               />
             </Grid>
           </Grid>
-          <Button type="submit" variant="contained" color="primary">
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            sx={{ marginTop: "15px" }}
+          >
             Continue
           </Button>
         </form>

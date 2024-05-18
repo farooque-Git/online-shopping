@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { FormControlLabel, Radio, RadioGroup, Button } from "@mui/material";
+import {
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+  Button,
+  Container,
+} from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { savePaymentMethod } from "../../actions/cartAction";
 import CheckoutStep from "../../component/shared/CheckoutStep";
@@ -21,7 +27,10 @@ const PaymentScreen = () => {
   };
 
   return (
-    <>
+    <Container
+      maxWidth="sm"
+      sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}
+    >
       <CheckoutStep step1 step2 step3 />
       <h1>Payment Method</h1>
       <form onSubmit={submitHandler}>
@@ -37,11 +46,16 @@ const PaymentScreen = () => {
             label="Paypal or Credit Card"
           />
         </RadioGroup>
-        <Button type="submit" variant="contained" color="primary">
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          sx={{ marginTop: "10px" }}
+        >
           Continue
         </Button>
       </form>
-    </>
+    </Container>
   );
 };
 

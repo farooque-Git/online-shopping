@@ -80,7 +80,9 @@ const PlaceOrderScreen = () => {
         <Grid item md={8}>
           <List>
             <ListItem>
-              <Typography variant="h6">Shipping</Typography>
+              <Typography variant="h6" sx={{ marginRight: "10px" }}>
+                Shipping
+              </Typography>
               <Typography>
                 <strong>Address:</strong> {cart.shippingAddress.address},{" "}
                 {cart.shippingAddress.city}, {cart.shippingAddress.postalcode},{" "}
@@ -89,7 +91,9 @@ const PlaceOrderScreen = () => {
             </ListItem>
             <Divider />
             <ListItem>
-              <Typography variant="h6">Payment Method</Typography>
+              <Typography variant="h6" sx={{ marginRight: "10px" }}>
+                Payment
+              </Typography>
               <Typography>
                 <strong>Method:</strong> {cart.paymentMethod}
               </Typography>
