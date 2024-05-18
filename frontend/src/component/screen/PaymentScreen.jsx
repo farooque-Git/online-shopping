@@ -6,7 +6,7 @@ import CheckoutStep from "../../component/shared/CheckoutStep";
 import { useNavigate } from "react-router-dom";
 
 const PaymentScreen = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const { shippingAddress } = cart;
   if (!shippingAddress.address) {
