@@ -5,6 +5,7 @@ const connectDb = require("./config/config");
 const productRoutes = require("./routes/productRoute");
 const { errorHandler } = require("./middlewares/errorMiddleware");
 const usersRoutes = require("./routes/UsersRoute");
+const orderRoutes = require("./routes/orderRoute");
 
 // dotenv config
 dotenv.config();
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 app.use("/api", productRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/orders", orderRoutes);
 
 // error handling middleware for other errors
 app.use((req, res, next) => {
