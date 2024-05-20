@@ -1,9 +1,9 @@
 import React from "react";
 import Alert from "@mui/material/Alert";
 
-const Message = ({ variant, children }) => {
+const Message = ({ variant, severity, children }) => {
   return (
-    <Alert variant={variant} severity="success">
+    <Alert variant={variant} severity={severity}>
       {children}
     </Alert>
   );
