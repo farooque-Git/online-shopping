@@ -1,6 +1,6 @@
 const bcrypt = require("bcryptjs");
 
-const users = [
+const User = [
   {
     name: "admin",
     email: "admin@admin.com",
@@ -19,4 +19,4 @@ const users = [
   },
 ];
 
-module.exports = users;
+module.exports = User;

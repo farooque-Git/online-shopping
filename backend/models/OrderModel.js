@@ -1,6 +1,8 @@
+const mongoose = require("mongoose");
+
 const orderSchema = mongoose.Schema(
   {
-    user: {
+    User: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
@@ -30,6 +32,7 @@ const orderSchema = mongoose.Schema(
         },
       },
     ],
+    // Nested object for shipping address details
     shippingAddress: {
       address: {
         type: String,
@@ -40,8 +43,7 @@ const orderSchema = mongoose.Schema(
         required: true,
       },
       postalCode: {
-        // Changed from "postalcode" to "postalCode"
-        type: String,
+        type: Number,
         required: true,
       },
       country: {
@@ -49,28 +51,21 @@ const orderSchema = mongoose.Schema(
         required: true,
       },
     },
+
     paymentMethod: {
       type: String,
       // required: true,
     },
     paymentResult: {
-      id: {
-        type: String,
-      },
-      status: {
-        type: String,
-      },
-      upload_status: {
-        type: String,
-      },
-      email_address: {
-        type: String,
-      },
+      id: { type: String },
+      status: { type: String },
+      update_time: { type: String },
+      email_address: { type: String },
     },
     taxPrice: {
       type: Number,
       required: true,
-      default: 0.0, // Changed from "defualt" to "default"
+      default: 0.0,
     },
     shippingPrice: {
       type: Number,
@@ -91,15 +86,17 @@ const orderSchema = mongoose.Schema(
       type: Date,
     },
     isDelivered: {
-      // Changed from "isDeliverd" to "isDelivered"
       type: Boolean,
       required: true,
       default: false,
     },
     deliveredAt: {
-      // Changed from "deliverAt" to "deliveredAt"
       type: Date,
     },
   },
   { timestamps: true }
 );
+
+const Order = mongoose.model("Order", orderSchema);
+
+module.exports = Order;

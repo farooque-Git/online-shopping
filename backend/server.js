@@ -36,8 +36,6 @@ app.use((req, res, next) => {
   next(err);
 });
 
-app.use(errorHandler);
-
 // app.use((err, req, res, next) => {
 //   const statusCode = err.status || 500;
 
@@ -63,6 +61,6 @@ app.use(errorHandler);
 const PORT = 8080;
 app.listen(process.env.PORT || PORT, () => {
   console.log(
-    `Server running in $(process.env.NODE_ENV) Mode on Port ${process.env.PORT}`
+    `Server running in $(process.env.NODE_ENV) Mode on Port ${process.env.PORT} `
   );
 });
