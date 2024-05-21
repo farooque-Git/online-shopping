@@ -25,12 +25,18 @@ app.use("/api", productRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", orderRoutes);
 
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
+
 // error handling middleware for other errors
 app.use((req, res, next) => {
   const err = new Error("Not found");
   err.status = 404;
   next(err);
 });
+
+app.use(errorHandler);
 
 // app.use((err, req, res, next) => {
 //   const statusCode = err.status || 500;
@@ -57,6 +63,6 @@ app.use((req, res, next) => {
 const PORT = 8080;
 app.listen(process.env.PORT || PORT, () => {
   console.log(
-    `Server running in $(process.env.NODE_ENV) Mode on Port ${process.env.PORT} `
+    `Server running in $(process.env.NODE_ENV) Mode on Port ${process.env.PORT}`
   );
 });
