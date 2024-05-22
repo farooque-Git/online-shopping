@@ -18,6 +18,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Message from "../shared/Message";
 import Loader from "../shared/Loader";
 import { getUserDetails, updateUserProfile } from "../../actions/userAction";
+import { listMyOrders } from "../../actions/orderAction";
 import FormContainer from "../shared/FormContainer";
 
 const ProfileScreen = () => {
@@ -60,6 +61,7 @@ const ProfileScreen = () => {
       // Fetch user details if not available
       if (!user) {
         dispatch(getUserDetails("profile"));
+        dispatch(listMyOrders());
       } else {
         // Set name and email if available
         setName(user.name);

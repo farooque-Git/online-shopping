@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const orderSchema = mongoose.Schema(
   {
-    User: {
+    user: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
@@ -59,7 +59,7 @@ const orderSchema = mongoose.Schema(
     paymentResult: {
       id: { type: String },
       status: { type: String },
-      update_time: { type: String },
+      update_status: { type: String },
       email_address: { type: String },
     },
     taxPrice: {
@@ -90,7 +90,7 @@ const orderSchema = mongoose.Schema(
       required: true,
       default: false,
     },
-    deliveredAt: {
+    deliverAt: {
       type: Date,
     },
   },

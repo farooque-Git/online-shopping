@@ -18,6 +18,7 @@ import { getOrderDetails, payOrder } from "../../actions/orderAction";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../shared/Message";
 import Loader from "../shared/Loader";
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const OrderScreen = () => {
   const { id: orderId } = useParams();
@@ -59,7 +60,7 @@ const OrderScreen = () => {
       document.body.appendChild(script);
     };
 
-    if (!order || successPay) {
+    if (!order || successPay || (order && order._id !== orderId)) {
       dispatch({ type: ORDER_PAY_RESET });
       dispatch(getOrderDetails(orderId));
     } else if (!order.isPaid) {
@@ -71,30 +72,30 @@ const OrderScreen = () => {
     }
   }, [dispatch, orderId, order, successPay]);
 
-  useEffect(() => {
-    if (sdkReady && !order.isPaid) {
-      window.paypal
-        .Buttons({
-          createOrder: (data, actions) => {
-            return actions.order.create({
-              purchase_units: [
-                {
-                  amount: {
-                    value: order.totalPrice,
-                  },
-                },
-              ],
-            });
-          },
-          onApprove: (data, actions) => {
-            return actions.order.capture().then((paymentResult) => {
-              successPaymentHandler(paymentResult);
-            });
-          },
-        })
-        .render("#paypal-button-container");
-    }
-  }, [sdkReady, order, successPaymentHandler]);
+  // useEffect(() => {
+  //   if (sdkReady && !order.isPaid) {
+  //     window.paypal
+  //       .Buttons({
+  //         createOrder: (data, actions) => {
+  //           return actions.order.create({
+  //             purchase_units: [
+  //               {
+  //                 amount: {
+  //                   value: order.totalPrice,
+  //                 },
+  //               },
+  //             ],
+  //           });
+  //         },
+  //         onApprove: (data, actions) => {
+  //           return actions.order.capture().then((paymentResult) => {
+  //             successPaymentHandler(paymentResult);
+  //           });
+  //         },
+  //       })
+  //       .render("#paypal-button-container");
+  //   }
+  // }, [sdkReady, order, successPaymentHandler]);
 
   return loading ? (
     <Loader />
@@ -102,7 +103,7 @@ const OrderScreen = () => {
     <Message variant="danger">{error}</Message>
   ) : (
     <>
-      <Typography variant="h2">Order {order._id}</Typography>
+      <Typography variant="h4">Order {order._id}</Typography>
       <Grid container spacing={3}>
         <Grid item md={8}>
           <List>
@@ -121,9 +122,12 @@ const OrderScreen = () => {
             </ListItem>
             <ListItem>
               <Typography>
-                <strong>Address:</strong> {order.shippingAddress.address},{" "}
-                {order.shippingAddress.city}, {order.shippingAddress.postalCode}
-                , {order.shippingAddress.country}
+                <strong>Address:</strong>
+                {order.shippingAddress.address}&nbsp;
+                {/* {order.shippingAddress.address}{" "}, */}
+                {order.shippingAddress.city}&nbsp;
+                {order.shippingAddress.postalCode}&nbsp;
+                {order.shippingAddress.country}&nbsp;
               </Typography>
             </ListItem>
             <ListItem>
@@ -176,7 +180,7 @@ const OrderScreen = () => {
                           </Link>
                         </Grid>
                         <Grid item md={5}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x ₹{item.price} = ₹{item.qty * item.price}
                         </Grid>
                       </Grid>
                     </ListItem>
@@ -197,7 +201,7 @@ const OrderScreen = () => {
                       Items
                     </Grid>
                     <Grid item xs={6}>
-                      ${order.itemsPrice}
+                      ₹{order.itemsPrice}
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -207,7 +211,7 @@ const OrderScreen = () => {
                       Shipping
                     </Grid>
                     <Grid item xs={6}>
-                      ${order.shippingPrice}
+                      ₹{order.shippingPrice}
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -217,7 +221,7 @@ const OrderScreen = () => {
                       Tax
                     </Grid>
                     <Grid item xs={6}>
-                      ${order.taxPrice}
+                      ₹{order.taxPrice}
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -227,7 +231,7 @@ const OrderScreen = () => {
                       Total
                     </Grid>
                     <Grid item xs={6}>
-                      ${order.totalPrice}
+                      ₹{order.totalPrice}
                     </Grid>
                   </Grid>
                 </ListItem>
@@ -242,7 +246,13 @@ const OrderScreen = () => {
                     {!sdkReady ? (
                       <CircularProgress />
                     ) : (
-                      <div id="paypal-button-container"></div>
+                      <PayPalScriptProvider>
+                        <PayPalButtons
+                          style={{ layout: "horizontal" }}
+                          amount={order.totalPrice}
+                          onSuccess={successPaymentHandler}
+                        />
+                      </PayPalScriptProvider>
                     )}
                   </ListItem>
                 )}
