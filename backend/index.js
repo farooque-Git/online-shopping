@@ -6,7 +6,7 @@ const productRoutes = require("./routes/productRoute");
 const { errorHandler } = require("./middlewares/errorMiddleware");
 const usersRoutes = require("./routes/UsersRoute");
 const orderRoutes = require("./routes/orderRoute");
-const cors = require("cors")
+const cors = require("cors");
 
 // dotenv config
 dotenv.config();
@@ -19,16 +19,9 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for all routes
-app.use(cors({
-  origin: ["https://online-shopping-frontend.vercel.app"],
-  methods: ["GET", "POST"],
-  credentials: true,
-}));
+app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("<h1> This is Node Server</h1>");
-});
-
+// Define your routes
 app.use("/api", productRoutes);
 app.use("/api/users", usersRoutes);
 app.use("/api/orders", orderRoutes);
@@ -52,17 +45,6 @@ app.use((req, res, next) => {
 //       message: err.message || "Internal Server Error",
 //     },
 //   });
-// });
-
-// // Route to get all products
-// app.get("/Products", (req, res) => {
-//   res.json(products);
-// });
-
-// // Route to get a specific product by ID
-// app.get("/Products/:id", (req, res) => {
-//   const product = products.find((prod) => prod._id === req.params.id);
-//   res.json(product);
 // });
 
 // Start the server
