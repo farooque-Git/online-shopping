@@ -18,16 +18,22 @@ const app = express();
 // middleware bodyparser
 app.use(express.json());
 
-// Custom middleware to set CORS headers
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-  next();
-});
+// Define whitelist with the frontend domain
+const whitelist = ['https://online-shopping-frontend.vercel.app'];
+
+// Define CORS options
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+
+// Enable CORS with CORS options
+app.use(cors(corsOptions));
 
 // Define your routes
 app.use("/api", productRoutes);
