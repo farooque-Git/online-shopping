@@ -6,6 +6,7 @@ const {
 
 const router = express.Router();
 
+
 // Route to get all products
 // router.get("/products", getProducts); NOT A GOOD PRACTICE
 router.route("/products").get(getProducts);
