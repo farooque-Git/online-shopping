@@ -4,7 +4,7 @@ const Product = require("../models/ProductModel");
 const getProducts = asyncHandler(async (req, res) => {
   const products = await Product.find({});
   // throw new error ("some error")
-  res.json(products);
+  res.json(Products);
 });
 
 const getProduct = asyncHandler(async (req, res) => {
