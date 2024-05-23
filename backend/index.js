@@ -19,12 +19,11 @@ const app = express();
 app.use(express.json());
 
 // Enable CORS for all routes
-app.use(cors(
-  {
-    origin: "https://online-shopping-frontend.vercel.app/",
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  }
-);
+app.use(cors({
+  origin: ["https://online-shopping-frontend.vercel.app"],
+  methods: ["GET", "POST"],
+  credentials: true,
+}));
 
 app.get("/", (req, res) => {
   res.send("<h1> This is Node Server</h1>");
