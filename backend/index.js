@@ -21,7 +21,7 @@ app.use(express.json());
 // Enable CORS for all routes
 app.use(cors(
   {
-    origin: "https://online-shopping-frontend.vercel.app",
+    origin: "https://online-shopping-frontend.vercel.app/",
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   }
 );
