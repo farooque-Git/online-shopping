@@ -6,6 +6,7 @@ const productRoutes = require("./routes/productRoute");
 const { errorHandler } = require("./middlewares/errorMiddleware");
 const usersRoutes = require("./routes/UsersRoute");
 const orderRoutes = require("./routes/orderRoute");
+const cors = require("cors")
 
 // dotenv config
 dotenv.config();
@@ -16,6 +17,14 @@ connectDb();
 const app = express();
 // middleware bodyparser
 app.use(express.json());
+
+// Enable CORS for all routes
+app.use(cors(
+  {
+    origin: "https://online-shopping-frontend.vercel.app",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  }
+);
 
 app.get("/", (req, res) => {
   res.send("<h1> This is Node Server</h1>");
